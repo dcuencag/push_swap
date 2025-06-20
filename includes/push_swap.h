@@ -6,21 +6,22 @@
 # include <limits.h>
 # include <stdio.h>
 
-typedef struct s_stack
+typedef struct s_node
 {
-	struct s_stack *prev;
+	struct s_node *prev;
+	struct s_node *next;
 	int nb;
 	int index;
-	struct s_stack *next;
+}	t_node;
+
+typedef struct s_stack
+{
+	t_node *top;
+	t_node *bottom;
+	int size;
 }	t_stack;
 
 int		main(int ac, char **av);
-int		is_valid(int ac, char **av);
-int		print_error(char *error);
-int		cuantity_of_nb(t_stack *a);
-int		calculate_required_bits(int max_value);
-t_stack	*build_stack(int argc, char **argv);
-void	free_stack(t_stack *stack);
-t_stack *new_node(int nb, int index);
+
 
 #endif

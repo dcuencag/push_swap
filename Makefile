@@ -1,6 +1,15 @@
 NAME = push_swap
 
-SRC = src/main.c src/is_valid.c src/utils.c src/stack.c
+SRC = \
+	src/main.c \
+	src/init/parser.c \
+	src/init/init_stack.c \
+	src/utils/utils.c \
+	src/utils/validate.c \
+	src/stack/stack_ops.c \
+	src/stack/rotate_ops.c \
+	src/algorithm/radix.c \
+	src/algorithm/sort_small.c
 OBJ = $(SRC:.c=.o)
 
 CC = cc

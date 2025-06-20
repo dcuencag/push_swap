@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:24:52 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/05/12 12:53:35 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/06/20 08:58:07 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_atoi_base(const char *str, int base);
+
+//Extras
+long	ft_atol(char *str);
 
 #endif

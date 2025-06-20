@@ -1,25 +1,21 @@
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
 	t_stack	*a;
-	t_stack	*tmp;
 
-	if (argc < 2)
-		return (1);
-	if (!is_valid(argc, argv))
+	if (ac < 2)
 		return (0);
-	a = build_stack(argc, argv);
+	a = build_stack(ac, av);
 	if (!a)
 		return (1);
-	tmp = a;
-	printf("cuantity of nb = %i\n", cuantity_of_nb(a));
-	printf("necesary_bits = %i\n", calculate_required_bits(cuantity_of_nb(a)));
-	while (tmp)
+	if (is_sorted(a))
 	{
-		printf("nb: %d, index: %d\n", tmp->nb, tmp->index);
-		tmp = tmp->next;
+		free_stack(a);
+		return (0);
 	}
+	radix_sort(a);
 	free_stack(a);
 	return (0);
 }
+
