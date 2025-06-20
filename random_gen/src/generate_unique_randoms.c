@@ -1,4 +1,4 @@
-#include "../includes/random_gen.h"
+#include "random_gen.h"
 
 int	*generate_unique_randoms(int count)
 {

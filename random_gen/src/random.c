@@ -1,4 +1,4 @@
-#include "../includes/random_gen.h"
+#include "random_gen.h"
 
 int	main(int argc, char **argv)
 {

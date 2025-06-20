@@ -1,4 +1,4 @@
-#include "../includes/random_gen.h"
+#include "random_gen.h"
 
 void	ft_swap(int *a, int *b)
 {

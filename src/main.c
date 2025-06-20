@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	main(int ac, char **av)
 {
@@ -9,6 +9,7 @@ int	main(int ac, char **av)
 	a = build_stack(ac, av);
 	if (!a)
 		return (1);
+	print_stack(a, "a");
 	if (is_sorted(a))
 	{
 		free_stack(a);
@@ -18,4 +19,3 @@ int	main(int ac, char **av)
 	free_stack(a);
 	return (0);
 }
-

@@ -1,11 +1,11 @@
 NAME = random_gen
 
-SRC = src/main.c src/utils.c src/generate_unique_randoms.c
+SRC = src/random.c src/utils.c src/generate_unique_randoms.c
 OBJ = $(SRC:.c=.o)
 
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
-INCLUDES = -Iincludes -I$(LIBFT_DIR)
+INCLUDES = -Iinclude -I$(LIBFT_DIR)
 
 LIBFT_DIR = ../libft
 LIBFT_A = $(LIBFT_DIR)/libft.a
