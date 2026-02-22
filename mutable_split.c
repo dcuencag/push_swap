@@ -1,0 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mutable_split.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/07 14:25:25 by dancuenc          #+#    #+#             */
+/*   Updated: 2025/07/07 14:25:26 by dancuenc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static int	count_words(char *s, char c)
+{
+	int		count;
+	bool	inside_word;
+
+	count = 0;
+	inside_word = false;
+	while (*s)
+	{
+		if (*s != c && !inside_word)
+		{
+			inside_word = true;
+			count++;
+		}
+		else if (*s == c)
+			inside_word = false;
+		s++;
+	}
+	return (count);
+}
+
+static char	*get_next_word(char **s, char c)
+{
+	char	*start;
+	char	*word;
+	int		len;
+	int		i;
+
+	while (**s == c)
+		(*s)++;
+	start = *s;
+	len = 0;
+	while ((*s)[len] && (*s)[len] != c)
+		len++;
+	word = malloc(len + 1);
+	if (!word)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		word[i] = start[i];
+		i++;
+	}
+	word[i] = '\0';
+	*s += len;
+	return (word);
+}
+
+static void	free_partial(char **array, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+		free(array[i++]);
+	free(array);
+}
+
+char	**split(char *s, char c)
+{
+	int		words_count;
+	char	**result_array;
+	int		i;
+
+	words_count = count_words(s, c);
+	if (words_count == 0)
+		return (NULL);
+	result_array = malloc(sizeof(char *) * (words_count + 1));
+	if (!result_array)
+		return (NULL);
+	i = 0;
+	while (i < words_count)
+	{
+		result_array[i] = get_next_word(&s, c);
+		if (!result_array[i])
+		{
+			free_partial(result_array, i);
+			return (NULL);
+		}
+		i++;
+	}
+	result_array[i] = NULL;
+	return (result_array);
+}
